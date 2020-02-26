@@ -2,7 +2,7 @@
   <div>
     <div class="recommend-title">热销推荐</div>
     <ul>
-      <li class="item" v-for="item of recommendList" :key="item.id">
+      <li class="item" v-for="item of list" :key="item.id">
         <img
           :src="item.imgUrl"
           class="item-img"
@@ -20,20 +20,8 @@
 <script>
 export default {
   name: 'HomeRecommen',
-  data () {
-    return {
-      recommendList: [{
-        id: '0001',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1409/19/adca619faaab0898245dc4ec482b5722.jpg_140x140_80f63803.jpg',
-        title: '故宫',
-        desc: '东方宫殿建筑代表，世界宫殿建筑典范'
-      }, {
-        id: '0002',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1409/19/adca619faaab0898245dc4ec482b5722.jpg_140x140_80f63803.jpg',
-        title: '故宫',
-        desc: '东方宫殿建筑代表，世界宫殿建筑典范'
-      }]
-    }
+  props: {
+    list: Array
   }
 }
 </script>
@@ -42,7 +30,6 @@ export default {
 .recommend-title
   line-height: .4rem
   text-indent: .2rem
-  margin-top: .2rem
 .item
   display: flex
   height: 1.9rem
