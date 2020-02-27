@@ -21,7 +21,7 @@ export default {
     overflow: hidden
     text-align: center
     color: #fff
-    background: $bgcolor
+    background: $bgColor
     font-size: .32rem
     position: relative
     .header-back
