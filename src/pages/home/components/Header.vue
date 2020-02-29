@@ -9,7 +9,7 @@
     </div>
     <router-link to="/city">
       <div class="header-right">
-        北京
+        {{this.city}}
         <span class="iconfont arrow-icon">&#xe64a;</span>
       </div>
     </router-link>
@@ -17,8 +17,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-  name: 'HomeHeader'
+  name: 'HomeHeader',
+  computed: {
+    ...mapState(['city']) // 将state的city数据映射到mapstate计算属性中 ...展开运算符
+  }
 }
 </script>
 
@@ -46,7 +50,8 @@ export default {
      color: #ccc
      line-height: .64rem
   .header-right
-     width: 1.24rem
+     min-width: 1.04rem
+     padding: 0 .1rem
      float: right
      text-align: center
      color: #fff
