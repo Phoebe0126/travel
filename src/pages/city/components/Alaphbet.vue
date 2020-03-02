@@ -1,5 +1,6 @@
 <template>
-  <div class="list">
+<div>
+   <div class="list">
       <ul>
           <li class="item"
               v-for="key of letters"
@@ -13,6 +14,10 @@
           </li>
       </ul>
   </div>
+  <div class="letter" v-show="showLetter">
+    {{this.letter}}
+  </div>
+</div>
 </template>
 
 <script>
@@ -25,7 +30,9 @@ export default {
     return {
       touchStatus: false,
       startY: 0,
-      timer: null
+      timer: null,
+      letter: '',
+      showLetter: false
     }
   },
   updated () {
@@ -46,6 +53,7 @@ export default {
     },
     handleTouchStart () {
       this.touchStatus = true
+      this.showLetter = true
     },
     handleTouchMove (e) {
       if (this.timer) {
@@ -56,14 +64,17 @@ export default {
             const touchY = e.touches[0].clientY - 79
             const index = Math.floor((touchY - this.startY) / 20)
             if (index >= 0 && index <= this.letters.length) {
+              this.letter = this.letters[index]
+              this.$emit('change', this.letter)
+              this.showLetter = true
             }
-            this.$emit('change', this.letters[index])
           }
         }, 16)
       }
     },
     handleTouchEnd () {
       this.touchStatus = false
+      this.showLetter = false
     }
   }
 }
@@ -84,4 +95,17 @@ export default {
       text-align: center
       color: $bgColor
       line-height: .4rem
+ .letter
+    position: absolute
+    width: 1rem
+    height: 1rem
+    background: $bgColor
+    border-radius: 50%
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    text-align: center
+    line-height: 1rem
+    color: #fff
+    font-size: .7rem
 </style>
