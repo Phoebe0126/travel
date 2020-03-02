@@ -50,6 +50,11 @@ export default {
   methods: {
     handleLetterClick (e) {
       this.$emit('change', e.target.innerText)
+      this.showLetter = true
+      this.letter = e.target.innerText
+      setTimeout(() => {
+        this.showLetter = false
+      }, 300)
     },
     handleTouchStart () {
       this.touchStatus = true
@@ -66,7 +71,6 @@ export default {
             if (index >= 0 && index <= this.letters.length) {
               this.letter = this.letters[index]
               this.$emit('change', this.letter)
-              this.showLetter = true
             }
           }
         }, 16)
