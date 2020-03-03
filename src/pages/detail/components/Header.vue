@@ -41,10 +41,10 @@ export default {
       }
     }
   },
-  activated () {
+  mounted () {
     window.addEventListener('scroll', this.handleScroll)
   },
-  deactivated () {
+  beforeDestry () {
     window.removeEventListener('scroll', this.handleScroll)
   }
 }

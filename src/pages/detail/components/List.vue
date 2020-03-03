@@ -17,6 +17,14 @@ export default {
   name: 'DetailList',
   props: {
     list: Array
+  },
+  methods: {
+    handleScroll () {
+      console.log(111)
+    }
+  },
+  activated () {
+    window.addEventListener('scroll', this.handleScroll)
   }
 }
 </script>
